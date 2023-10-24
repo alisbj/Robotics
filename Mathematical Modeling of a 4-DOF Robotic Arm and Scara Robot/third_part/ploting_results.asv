@@ -1,0 +1,42 @@
+clc
+close all
+
+time_dim = reference.time;
+ref=reference.Data
+
+figure
+plot(time_dim , tau(:,1))
+hold on
+plot(time_dim , reference.Data(:,1))
+legend('b1_ref','b1_out')
+xlabel('t')
+
+
+% 
+% figure
+% plot(0:Ts_M:tf , tau(:,2))
+% hold on
+% plot(torque.time , torque.Data(:,2))
+% legend('tau_2','tau2_{sim}')
+% print('dynamic_model_validation','-depsc')
+% xlabel('t')
+% ylabel('\tau (N.m)')
+% 
+% figure
+% plot(0:Ts_M:tf , tau(:,3))
+% hold on
+% plot(torque.time , torque.Data(:,3))
+% legend('tau_3','tau3_{sim}')
+% print('dynamic_model_validation','-depsc')
+% xlabel('t')
+% ylabel('\tau (N.m)')
+% 
+% figure
+% plot(0:Ts_M:tf , tau(:,4))
+% hold on
+% plot(torque.time , torque.Data(:,4))
+% legend('f_4','f4_{sim}')
+% print('dynamic_model_validation','-depsc')
+% xlabel('t')
+% ylabel('force (N)')
+% 

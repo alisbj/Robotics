@@ -1,0 +1,56 @@
+syms b1 b4 th2 th3 X Y Z phi
+%% D-H Params :
+
+ a1=0;
+ a2=0.3971;
+ a3=0.2508;
+ a4=0;
+
+ b2=0.121;
+ b3=0.08;
+
+ alpha1=pi/2;
+ alpha2=0;
+ alpha3=0;
+ alpha4=0;
+
+ th1=0;
+ th4=0;
+
+ Q1=dh_q(alpha1 , th1);
+ Q2=dh_q(alpha2 , th2);
+ Q3=dh_q(alpha3 , th3);
+ Q4=dh_q(alpha4 , th4);
+
+ a_1=dh_a(a1 , b1 , th1);
+ a_2=dh_a(a2 , b2 , th2);
+ a_3=dh_a(a3 , b3 , th3);
+ a_4=dh_a(a4 , b4 , th4);
+
+
+ Q_ee=Q1*Q2*Q3*Q4;
+ P_ee=a_1 + Q1*a_2 + Q1*Q2*a_3 + Q1*Q2*Q3*a_4;
+
+ disp("Forward Kinematic Equations :")
+ Q_ee = simplify(Q_ee)
+ P_ee = simplify(P_ee)
+
+
+
+eqns= [X==P_ee(1) , Y==P_ee(2) , Z==P_ee(3) , phi==th2+th3];
+S=solve(eqns , [b1 th2 th3 b4]);
+Inv_func = [S.b1 ; S.th2 ; S.th3 ; S.b4];
+disp("Inverse Kinematic Equations b1 , theta2 , theta 3 , b4 :")
+%Inv_func=simplify(Inv_func,'Steps',10)
+ 
+
+function [Q]=dh_q(alpha , theta);
+    Q=[cos(theta) , -cos(alpha)*sin(theta) , sin(alpha)*sin(theta);
+        sin(theta), cos(alpha)*cos(theta) , -sin(alpha)*cos(theta);
+        0 , sin(alpha) , cos(alpha)];
+end
+
+function [a_i]=dh_a(a , b , theta);
+    a_i = [a*cos(theta) ; a*sin(theta) ; b ];
+end
+
