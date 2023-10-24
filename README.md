@@ -1,5 +1,4 @@
-# Robotics
-Projects about Robotics Course
+# Robotics Course
 In this repository, the projetcs of the robotics course are presented. The titles of these projects are as fallows:
 1. Implement Pong Game with Arduino and Python
 2. Pose Detection of Objects and Face Mask Detection
